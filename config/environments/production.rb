@@ -48,7 +48,7 @@ Rails.application.configure do
   # when problems arise.
   config.log_level = :debug
 
-  config.action_mailer.raise_delivery_error = true
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.deliver_method = :smtp
   host = 'ancient-oasis-9198.herokuapp.com'
   config.action_mailer.default_url_options = { host: host }
