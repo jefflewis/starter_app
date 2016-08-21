@@ -1,0 +1,83 @@
+.ui.container
+	.ui.middle.aligned.center.aligned.grid
+	  .column
+	    h2.ui.image.header
+	      img.image style="width: auto;" src=image_url('logo.png')
+	    = form_tag sessions_path, class: 'ui large form'
+	      - if flash[:alert]
+	        .ui.negative.message
+	          p= flash[:alert]
+	      - if flash[:notice]
+	        .ui.message
+	          p= flash[:notice]
+	      - if flash[:success]
+	        .ui.positive.message
+	          p= flash[:success]
+	      .ui.segment
+	        .field
+	          .ui.left.icon.input
+	            i.user.icon
+	            input name="email" placeholder=("Email address") type="email" required="true"
+	        .field
+	          .ui.left.icon.input
+	            i.lock.icon
+	            input name="password" placeholder="Password" type="password" required="true"
+	        button.ui.fluid.large.primary.submit.button type="submit" Log In
+			.ui.message 
+        span Don't have an account?
+        = link_to ' Sign up', signup_path
+/ 
+/ 
+/ .ui.tiny.container
+/   .ui.middle.aligned.center.aligned.grid
+/     .two.wide.column
+/     .ten.wide.column
+/       h2.ui.image.header
+/         = image_tag 'logo.png', class: 'ui image'
+/         .content Log-in to your account
+/ 			= form_tag admin_sessions_path, class: 'ui large form'
+/       = form_for new_session, html: { class: 'ui form' } do |f|
+/         .ui.stacked.segment
+/ 					.fields
+/ 						.field
+/ 							= f.label :email
+/ 							= f.text_field :email
+/ 						.field
+/ 							= f.label :password
+/ 							= link_to "(forgot password)", new_password_reset_path
+/ 							= f.text_field :password
+/ 						.inline.field
+/ 					    .ui.checkbox
+/ 								= f.label :remember_me
+/ 								= f.text_field :remember_me
+/ 						= f.submit 'Create my account', class: 'ui fluid large primary submit button'
+      / .ui.message 
+      /   span Don't have an account?
+      /   = link_to ' Sign up', signup_path
+/     .two.wide.column
+
+/ <% provide(:title, "Log in") %>
+/ <h1>Log in</h1>
+/ 
+/ <div class="row">
+/ 	<div class="col-md-6 col-md-offset-3">
+/ 		<%= form_for(:session, url: login_path) do |f| %>
+/ 
+/ 			<%= f.label :email %>
+/ 			<%= f.email_field :email, class: 'form-control' %>
+/ 
+/ 			<%= f.label :password %>
+/ 			<%= link_to "(forgot password)", new_password_reset_path %>
+/ 			<%= f.password_field :password, class: 'form-control' %>
+/ 
+/ 			<%= f.label :remember_me, class: "checkbox inline" do %>
+/ 				<%= f.check_box :remember_me %>
+/ 				<span>Remember me on this computer</span>
+/ 			<% end %>
+/ 
+/ 			<%= f.submit "Log in", class: "btn btn-primary" %>
+/ 		<% end %>
+/ 
+/ 		<p>New user? <%= link_to "Sign up now!", signup_path %></p>
+/ 	</div>
+/ </div>

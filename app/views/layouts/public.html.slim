@@ -1,0 +1,70 @@
+doctype html
+html
+  head
+    title= @title || 'Status Board'
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'https://www.google.com/jsapi'
+    = javascript_include_tag 'application'
+    = csrf_meta_tag
+    css:
+      @font-face {
+        font-family: 'Icons';
+        src: url(/fonts/icons.eot);
+        src: url(/fonts/icons.eot?#iefix) format("embedded-opentype"), url(/fonts/icons.woff2) format("woff2"), url(/fonts/icons.woff) format("woff"), url(/fonts/icons.ttf) format("truetype"), url(/fonts/icons.svg#icons) format("svg");
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-decoration: inherit;
+        text-transform: none;
+      }
+  body class="#{controller_name} #{action_name} #{defined?(step) ? step : nil}"
+    .ui.large.top.fixed.menu.transition.hidden
+      .ui.container
+        .right.menu
+          .item
+            = link_to 'Log in', login_path, class: 'ui button'
+          .item
+            = link_to 'Sign up', signup_path, class: 'ui button'            
+            
+    .ui.inverted.vertical.masthead.center.aligned.segment
+      ui.container
+        .ui.large.secondary.inverted.pointing.menu
+          a.toc.item
+            i.sidebar.icon
+          .right.item
+            = link_to 'Log in', login_path, class: 'ui inverted button'
+            = link_to 'Sign up', signup_path, class: 'ui inverted button', style: 'margin-left: 1rem;'
+    #content
+      - if flash[:alert]
+        .ui.negative.message
+          i.close.icon
+          .header Alert
+          p= flash[:alert]
+      - if flash[:notice]
+        .ui.message
+          i.close.icon
+          .header Notice
+          p= flash[:notice]
+      - if flash[:success]
+        .ui.positive.message
+          i.close.icon
+          .header Success
+          p= flash[:success]
+      = yield
+    .ui.message=debug(params) if Rails.env.development?
+  .ui.inverted.vertical.footer.segment
+    .ui.container
+      .ui.stackable.inverted.divided.equal.height.stackable.grid
+        .three.wide.column
+          .ui.inverted.header About
+          .ui.inverted.link.list
+            a href="#" class="item" Sitemap
+            a href="#" class="item" Contact Us
+        .three.wide.column
+          .ui.inverted.header About
+          .ui.inverted.link.list
+            a href="#" class="item" Sitemap
+            a href="#" class="item" Contact Us
+        .seven.wide.column
+          .ui.inverted.header Footer Header
+          p Extra space for a call to action inside the footer that could help re-engage users.

@@ -1,0 +1,13 @@
+.ui.card
+  .image
+    = image_tag user.gravatar_url(256)
+  .content
+    = link_to user.name, [user], class: 'header'
+    .meta
+      .date Joined #{user.created_at}
+    .description 
+      - if current_user.admin?
+        = link_to "delete", user, method: :delete, data: { confirm: "You sure?" }
+  .extra.content
+      i.user.icon 
+      | 22 Friends    

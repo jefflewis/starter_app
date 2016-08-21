@@ -7,23 +7,23 @@
 development:
   adapter: postgresql
   enconding: unicode
-  database: rails-sample-app_development
+  database: status_board_development
   pool: 5
-  username: pbl3
-  password: postgres
+  username:
+  password:
 
 test:
   adapter: postgresql
   enconding: unicode
-  database: rails-sample-app_test
+  database: status_board_test
   pool: 5
-  username: pbl3
+  username:
   password: postgres
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: rails-sample-app_production
+  database: status_board_production
   pool: 5
-  username: pbl3
+  username:
   password:

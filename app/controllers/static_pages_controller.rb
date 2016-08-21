@@ -1,5 +1,7 @@
+# Static Pages Controller
 class StaticPagesController < ApplicationController
   def home
+    render layout: 'public'
   end
 
   def help

@@ -1,0 +1,10 @@
+#topnav.topnav.ui.menu
+  .item= render_breadcrumbs
+  
+  .right.menu
+    .item= link_to 'Users', [:users]
+    .ui.dropdown.icon.item
+      img.ui.circular.image.gravatar src=current_user.gravatar_url(256) style="width: 16px" title=current_user.name
+      .menu
+        .item= current_user.name
+        = link_to "Log out", logout_path, method: :delete

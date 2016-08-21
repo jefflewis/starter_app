@@ -1,0 +1,27 @@
+.ui.menu
+  = link_to 'Edit', [:edit, @user], class: 'item'
+
+.ui.two.column.grid
+  .column
+    .ui.segment
+      .ui.feed
+        .event
+          .label
+            = image_tag @user.gravatar_url(256)
+          .content
+            .summary
+              a.user= @user.name
+              .date sometime ago
+              .extra.text This is where a description could go
+
+  .column
+    table.ui.table
+      tr
+        td User ID
+        td= @user.id
+      tr
+        td Name
+        td= @user.name
+      tr
+        td Email
+        td= @user.email

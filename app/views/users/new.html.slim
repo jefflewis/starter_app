@@ -1,0 +1,27 @@
+.ui.tiny.container
+  .ui.middle.aligned.center.aligned.grid
+    .two.wide.column
+    .ten.wide.column
+      h2.ui.image.header
+        = image_tag 'logo.png', class: 'ui image'
+        .content Log-in to your account
+      = form_for @user, html: { class: 'ui form' } do |f|
+        .ui.stacked.segment
+          = render 'fields', f: f
+          = f.submit 'Create my account', class: 'ui fluid large primary submit button'
+      .ui.message 
+        span Already have an account?
+        = link_to ' Log in', login_path
+    .two.wide.column
+
+  / <% provide(:title, 'Sign up') %>
+  / <h1>Sign up</h1>
+  / 
+  / <div class="row">
+  /   <div class="col-md-6 col-md-offset-3">
+  /     <%= form_for(@user) do |f| %>
+  /       <%= render 'fields', f: f %>
+  /       <%= f.submit "Create my account", class: "btn btn-primary" %>
+  /     <% end %>
+  /   </div>
+  / </div>

@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    title= @title || 'Status Board'
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'https://www.google.com/jsapi'
+    = javascript_include_tag 'application'
+    = csrf_meta_tag
+  body class="#{controller_name} #{action_name} #{defined?(step) ? step : nil}"
+    / = render 'shared/sidenav'
+    #content
+      = render 'shared/topnav'
+      - if flash[:alert]
+        .ui.negative.message
+          i.close.icon
+          .header Alert
+          p= flash[:alert]
+      - if flash[:notice]
+        .ui.message
+          i.close.icon
+          .header Notice
+          p= flash[:notice]
+      - if flash[:success]
+        .ui.positive.message
+          i.close.icon
+          .header Success
+          p= flash[:success]
+      .row
+        .ui.container
+          = yield
+    .ui.message=debug(params) if Rails.env.development?
